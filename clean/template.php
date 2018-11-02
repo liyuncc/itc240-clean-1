@@ -1,4 +1,4 @@
-
+<?php include 'config.php'?>
 <?php include 'header.php'?>
 // template as a starting point for all pages of a website
 /* 
