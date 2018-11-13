@@ -3,13 +3,16 @@
     config.php
     stores configuration data for our application
 */
-//echo basename($_SERVER['PHP_SELF']);
+
+ob_start(); //prevents header errors (read the whole file and do not send data)
 
 
+define('DEBUG',TRUE); #we want to see all errors
+
+include 'credentials.php'; //db credentials
 
 define('THIS_PAGE', basename($_SERVER['PHP_SELF']));
-//echo 'the constant is storing: ' . THIS_PAGE;
-//die;
+
 
 //default page values
 $title = THIS_PAGE;
@@ -36,4 +39,25 @@ switch(THIS_PAGE){
         $pageHeader = 'Please contact us';
         $subHeader = 'We appreciate your feedback';
     break; 
+        
+    case 'db-test.php':
+        $title= 'A database test page';
+        $pageHeader = 'Database test page';
+        $subHeader = 'Check this page to see if your db credentials are correct.';
+    break; 
 }
+
+
+function myerror($myFile, $myLine, $errorMsg)
+{
+    if(defined('DEBUG') && DEBUG)
+    {
+       echo "Error in file: <b>" . $myFile . "</b> on line: <b>" . $myLine . "</b><br />";
+       echo "Error Message: <b>" . $errorMsg . "</b><br />";
+       die();
+    }else{
+		echo "I'm sorry, we have encountered an error.  Would you like to buy some socks?";
+		die();
+    }
+}
+
