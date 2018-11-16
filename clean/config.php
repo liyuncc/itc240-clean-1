@@ -27,6 +27,12 @@ switch(THIS_PAGE){
         $pageHeader = 'Put PageID here';
         $subHeader = 'Put more info about page here';
     break;
+    
+    case 'customer_list.php':
+        $title= 'A list of customers';
+        $pageHeader = 'Our Customers';
+        $subHeader = 'Don\'t sue us';
+    break;
         
     case 'daily.php':
         $title= 'My daily page';
